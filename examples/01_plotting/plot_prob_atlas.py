@@ -37,6 +37,12 @@ smith = datasets.fetch_atlas_smith_2009()
 # ICBM tissue probability
 icbm = datasets.fetch_icbm152_2009()
 
+# Allen RSN networks
+allen = datasets.fetch_atlas_allen_2011()
+
+# Pauli subcortical atlas
+subcortex = datasets.fetch_atlas_pauli_2017()
+
 # Visualization
 from nilearn import plotting
 
@@ -47,7 +53,10 @@ atlas_types = {'Harvard_Oxford': harvard_oxford.maps,
                'Smith2009 70 RSNs': smith.rsn70,
                'Smith2009 20 Brainmap': smith.bm20,
                'Smith2009 70 Brainmap': smith.bm70,
-               'ICBM tissues': (icbm['wm'], icbm['gm'], icbm['csf'])}
+               'ICBM tissues': (icbm['wm'], icbm['gm'], icbm['csf']),
+               'Allen2011': allen.rsn28,
+               'Pauli2017 Subcortical Atlas': subcortex.maps,
+               }
 
 for name, atlas in sorted(atlas_types.items()):
     plotting.plot_prob_atlas(atlas, title=name)
@@ -56,4 +65,5 @@ for name, atlas in sorted(atlas_types.items()):
 plotting.plot_prob_atlas(smith.bm10, title='Smith2009 10 Brainmap (with'
                                            ' colorbar)',
                          colorbar=True)
+print('ready')
 plotting.show()
